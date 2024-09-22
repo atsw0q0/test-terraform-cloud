@@ -2,10 +2,7 @@ module "network-templates" {
   source  = "app.terraform.io/atsuw0w-test-terraform/network-templates/aws"
   version = "1.0.0"
   # Variables
-  pj_tags = {
-    name = "fuga"
-    env  = "test"
-  }
+  pj_tags = var.pj_tags
   vpc_prefix = {
     prefix     = "net"
     cidr_block = "10.1.0.0/16"
@@ -60,10 +57,7 @@ module "network-templates" {
 module "ec2-sg" {
   source  = "app.terraform.io/atsuw0w-test-terraform/network-templates/aws//modules/security_group"
   version = "1.0.1-alpha1"
-  pj_tags = {
-    name = "fuga"
-    env  = "test"
-  }
+  pj_tags = var.pj_tags
 
   sg = {
     prefix      = "ec2"
@@ -83,6 +77,29 @@ module "ec2-sg" {
         to_port     = 80
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
+      }
+    }
+  }
+}
+
+
+module "mariadb-sg" {
+  source  = "app.terraform.io/atsuw0w-test-terraform/network-templates/aws//modules/security_group"
+  version = "1.0.1-alpha1"
+
+  pj_tags = var.pj_tags
+
+  sg = {
+    prefix      = "mariadb"
+    description = "mariadb"
+    vpc_id      = module.network-templates.vpc_id
+    ingress = {
+      mariadb = {
+        description     = "mariadb"
+        from_port       = 3306
+        to_port         = 3306
+        protocol        = "tcp"
+        security_groups = [module.ec2-sg.sg_id]
       }
     }
   }
