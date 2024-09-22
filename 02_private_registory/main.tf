@@ -95,11 +95,11 @@ module "mariadb-sg" {
     vpc_id      = module.network-templates.vpc_id
     ingress = {
       mariadb = {
-        description = "mariadb"
-        from_port   = 3306
-        to_port     = 3306
-        protocol    = "tcp"
-        cidr_blocks = [module.ec2-sg.sg_id]
+        description     = "mariadb"
+        from_port       = 3306
+        to_port         = 3306
+        protocol        = "tcp"
+        security_groups = [module.ec2-sg.sg_id]
       }
     }
   }
