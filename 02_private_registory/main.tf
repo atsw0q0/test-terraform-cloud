@@ -99,7 +99,7 @@ module "mariadb-sg" {
         from_port   = 3306
         to_port     = 3306
         protocol    = "tcp"
-        cidr_blocks = [module.ec2_sg.sg_id]
+        cidr_blocks = [module.ec2-sg.sg_id]
       }
     }
   }
