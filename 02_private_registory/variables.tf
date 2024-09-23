@@ -8,3 +8,11 @@ variable "pj_tags" {
     env  = "test"
   }
 }
+
+variable "rds_password" {
+  type = string
+}
+
+variable "rds_username" {
+  type = string
+}
