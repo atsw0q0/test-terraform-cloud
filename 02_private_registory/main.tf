@@ -1,6 +1,6 @@
 module "network-templates" {
   source  = "app.terraform.io/atsuw0w-test-terraform/network-templates/aws"
-  version = "1.0.0"
+  version = "1.0.1-alpha2"
   # Variables
   pj_tags = var.pj_tags
   vpc_prefix = {
