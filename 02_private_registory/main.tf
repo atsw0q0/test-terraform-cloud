@@ -115,7 +115,7 @@ module "rds-mysql" {
     prefix           = "app"
     subnet_group_ids = [for k, v in module.network-templates.subnet_pri_ids : v] #["subnet-xxx", "subnet-yyy"]
 
-    security_group_ids    = [module.mariadb_sg.sg_id]
+    security_group_ids    = [module.mariadb-sg.sg_id]
     rds_instance_class    = "db.t4g.micro"
     rds_allocated_storage = 20
     db_engine             = "mysql"
