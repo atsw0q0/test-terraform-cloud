@@ -3,6 +3,16 @@ data "tfe_outputs" "vpc" {
   workspace    = "test-terraform-cloud-private-registory"
 }
 
+# data "terraform_remote_state" "vpc" {
+#   backend = "remote"
+#   config = {
+#     organization = "atsuw0w-test-terraform"
+#     workspaces = {
+#       name    = "test-terraform-cloud-private-registory"
+#     }
+#    }
+# }
+
 
 module "ec2_instance" {
   source  = "app.terraform.io/atsuw0w-test-terraform/webapp-templates/aws//modules/ec2_instance"
