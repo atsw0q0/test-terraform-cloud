@@ -6,7 +6,7 @@ data "tfe_outputs" "vpc" {
 
 module "ec2_instance" {
   source  = "app.terraform.io/atsuw0w-test-terraform/webapp-templates/aws//modules/ec2_instance"
-  version = "1.0.1-aplha"
+  version = "v1.0.1-aplha1"
 
   pj_tags = var.pj_tags
 
