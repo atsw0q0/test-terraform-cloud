@@ -6,6 +6,7 @@ resource "aws_vpc" "vpc" {
     Name = format("%s-%s-vpc-%s-%02d", var.pj_tags.name, var.pj_tags.env, var.vpc_prefix.prefix, 1)
     PJ   = var.pj_tags.name
     Env  = var.pj_tags.env
+    TRAIN = "CHUOLINE"
   }
 }
 
@@ -16,5 +17,6 @@ resource "aws_internet_gateway" "igw" {
     Name = format("%s-%s-igw-%s-%02d", var.pj_tags.name, var.pj_tags.env, var.vpc_prefix.prefix, 1)
     PJ   = var.pj_tags.name
     Env  = var.pj_tags.env
+    TRAIN = "CHUOLINE"
   }
 }
